@@ -28,7 +28,7 @@ def ler_argumentos():
     parser.add_argument("--alpha", type=float, default=0.001, help="taxa de aprendizagem (padrão: 0.001)")
     parser.add_argument("--epocas", type=int, default=200, help="número de épocas (padrão: 200)")
     parser.add_argument("--fracao-teste", type=float, default=0.2, help="fração dos dados para teste (padrão: 0.2)")
-    parser.add_argument("--semente", type=int, default=42, help="semente da separação e do embaralhamento")
+    parser.add_argument("--semente", type=int, default=7, help="semente da separação e do embaralhamento")
     parser.add_argument("--inicializacao", choices=["zeros", "aleatoria"], default="zeros",
                         help="pesos iniciais (padrão: zeros, como no livro)")
     parser.add_argument("--sem-janela", action="store_true", help="não abre as janelas dos gráficos")
@@ -42,7 +42,7 @@ def imprimir_metricas(titulo, metricas):
 
 def main():
     # Evita caracteres corrompidos quando a saída é redirecionada no Windows.
-    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stdout.reconfigure(encoding="utf-8") # type: ignore
     args = ler_argumentos()
 
     dados = preparar_dados(ARQUIVO_DADOS, fracao_teste=args.fracao_teste, semente=args.semente)
@@ -94,7 +94,7 @@ def main():
         mse_minimo=F_otimo,
         alpha=args.alpha,
         nomes_teste=dados["carros_teste"],
-        pasta_saida=PASTA_RESULTADOS,
+        pasta_saida=str(PASTA_RESULTADOS),
         mostrar=not args.sem_janela,
     )
     print("\nGráficos salvos em:")

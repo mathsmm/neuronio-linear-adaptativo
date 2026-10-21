@@ -82,7 +82,7 @@ def grafico_real_vs_previsto(t, a, metricas=None):
     t = np.ravel(t)
     a = np.ravel(a)
 
-    with plt.rc_context(ESTILO):
+    with plt.rc_context(ESTILO): # type: ignore
         fig, ax = plt.subplots(figsize=(6.4, 6.0))
 
         minimo = min(t.min(), a.min())
@@ -131,7 +131,7 @@ def grafico_residuos(t, a, nomes=None, n_destaques=3):
     a = np.ravel(a)
     e = t - a
 
-    with plt.rc_context(ESTILO):
+    with plt.rc_context(ESTILO): # type: ignore
         fig, ax = plt.subplots(figsize=(8.0, 5.0))
 
         ax.axhline(0, color=TEXTO_SECUNDARIO, linewidth=1.2, zorder=2, label="Resíduo nulo ($e = 0$)")
@@ -168,7 +168,7 @@ def grafico_evolucao_mse(historico, mse_minimo=None, alpha=None):
     tem_teste = mse_teste.size == mse_treino.size
     inicio_detalhe = max(1, mse_treino.size // 10)
 
-    with plt.rc_context(ESTILO):
+    with plt.rc_context(ESTILO): # type: ignore
         fig, (ax_total, ax_detalhe) = plt.subplots(1, 2, figsize=(12.0, 4.8))
 
         for ax, fatia in ((ax_total, slice(None)), (ax_detalhe, slice(inicio_detalhe - 1, None))):
@@ -197,7 +197,7 @@ def grafico_evolucao_mse(historico, mse_minimo=None, alpha=None):
         if tem_teste:
             valores_detalhe.append(mse_teste[inicio_detalhe - 1:])
         if mse_minimo is not None:
-            valores_detalhe.append([mse_minimo])
+            valores_detalhe.append(np.array([mse_minimo]))
         valores_detalhe = np.concatenate(valores_detalhe)
         folga = 0.08 * (valores_detalhe.max() - valores_detalhe.min())
         ax_detalhe.set_ylim(valores_detalhe.min() - 2 * folga, valores_detalhe.max() + folga)
