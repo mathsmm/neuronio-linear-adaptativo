@@ -11,7 +11,7 @@ Implementação baseada no capítulo 10 de "Neural Network Design"
     e     erro, e = t - a (S x 1)
     W     matriz de pesos (S x R); a linha i é o vetor iw transposto
     b     vetor de bias (S x 1)
-    alpha taxa de aprendizagem (α no livro)
+    alpha taxa de aprendizagem
     k     iteração do algoritmo LMS
     x     vetor de parâmetros de um neurônio, x = [1w; b]       (Eq. 10.6)
     z     vetor de entrada aumentado, z = [p; 1]                 (Eq. 10.7)

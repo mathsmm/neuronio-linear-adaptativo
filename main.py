@@ -25,8 +25,8 @@ PASTA_RESULTADOS = PASTA / "resultados"
 
 def ler_argumentos():
     parser = argparse.ArgumentParser(description="ADALINE + LMS na base Auto MPG")
-    parser.add_argument("--alpha", type=float, default=0.001, help="taxa de aprendizagem (padrão: 0.001)")
-    parser.add_argument("--epocas", type=int, default=200, help="número de épocas (padrão: 200)")
+    parser.add_argument("--alpha", type=float, default=0.0001, help="taxa de aprendizagem (padrão: 0.001)")
+    parser.add_argument("--epocas", type=int, default=50, help="número de épocas (padrão: 200)")
     parser.add_argument("--fracao-teste", type=float, default=0.2, help="fração dos dados para teste (padrão: 0.2)")
     parser.add_argument("--semente", type=int, default=7, help="semente da separação e do embaralhamento")
     parser.add_argument("--inicializacao", choices=["zeros", "aleatoria"], default="zeros",
